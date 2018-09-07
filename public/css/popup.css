@@ -1,0 +1,113 @@
+* { margin: 0px; padding: 0px; box-sizing: border-box; font-family: 'Ubuntu', sans-serif; }
+
+/*
+Lilac:       #3b1878;
+Light lilac: #725c98;
+Green:       #4cd566;
+Red:         #ff1c38;
+ */
+
+body {
+  width: 300px; margin: 0 auto; background: #3b1878;
+}
+header {
+  width: 100%; position: relative; background: #725c98;
+  height: 0px; transition: height 0.3s;
+}
+header.show {
+  height: calc(75px / 2);
+}
+header .logo {
+  position: absolute; top: -500px; left: calc(50% - 37.5px); height: 75px;
+  transform: rotate(0deg); transition: transform 0.5s linear 1s, top 0.5s ease 0.5s;
+}
+header .logo.show {
+  transform: rotate(360deg); top: 0px;
+
+}
+.title {
+  text-align: center;
+  margin-top: calc(75px / 2 + 5px);
+  color: #725c98;
+  letter-spacing: 0.5px;
+  font-weight: 100;
+  transition: opacity 2s ease 0.5s;
+  opacity: 0;
+}
+.title.show {
+  opacity: 1;
+}
+
+section {
+  width: 95%; display: block; margin: 7px auto;
+  overflow: auto; max-height: 300px; background: #4B2C82;
+  opacity: 0; transition: opacity 0.3s linear 1s;
+}
+section.show {
+  opacity: 1;
+}
+
+/*STORES*/
+.stores::-webkit-scrollbar-track {
+  background: #dbdbdb; border-radius: 5px;
+}
+.stores::-webkit-scrollbar-thumb {
+  background: #725c98; border-radius: 5px;
+}
+.stores::-webkit-scrollbar {
+  background: #dbdbdb; border-radius: 5px;
+  width: 8px;
+}
+.stores {
+  display: flex;
+  flex-flow: wrap;
+}
+.stores .store {
+  width: 33.333333%; margin: 10px 0 0 0; cursor: pointer;
+  transition: transform 0.15s; transform: scale(0);
+}
+.stores .store.show {
+  transform: scale(1);
+}
+.stores .store .icon {
+  width: 50px; height: 50px; display: block; margin: 0 auto;
+  transform: scale(0) rotate(0deg);
+}
+  .stores .store .icon.show {
+    animation-name: scale-up-and-rotate;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes scale-up-and-rotate {
+    0%   { transform: scale(0) rotate(0deg); }
+    50%  { transform: scale(1.5) rotate(180deg); }
+    75%  { transform: scale(0.8) rotate(270deg); }
+    100% { transform: scale(1) rotate(360deg); }
+  }
+.stores .store .name {
+  color: white; text-align: center;
+}
+.stores .store .cashback {
+  color: #4cd566; text-align: center;
+}
+
+.popup-stores-empty {
+
+}
+.loading {
+  margin: 0 auto; width: 100px; height: 100px;
+  display: flex; justify-content: center; align-items: center;
+}
+.loading .pipe {
+  width: 3px; height: 20px; background: lightgreen;
+  transform: rotate(0deg);
+  animation-name: loading;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes loading {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

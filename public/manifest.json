@@ -1,0 +1,32 @@
+{
+
+  "manifest_version": 2,
+  "name": "Lunes Cashback",
+  "version": "1.0",
+
+  "description": "Receive LUNES back with us for buying",
+
+  "icons": {
+    "48": "icons/lns.png"
+  },
+
+  "browser_action": {
+    "default_icon":  "icons/lns.png",
+    "default_title": "Cashback now!",
+    "default_popup": "index.html"
+  },
+
+  "permissions": ["management","cookies","*://*/*","activeTab","storage"],
+
+  "background": {
+    "scripts": ["hot-update.js","js/background/main.bundle.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://dubai.com/*"],
+      "js": ["js/popup/bundle.js"]
+    }
+  ]
+}
