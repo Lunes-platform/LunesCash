@@ -1,4 +1,14 @@
-* { margin: 0px; padding: 0px; box-sizing: border-box; font-family: 'Ubuntu', sans-serif; }
+* {
+  margin: 0px; padding: 0px; box-sizing: border-box; font-family: 'Ubuntu', sans-serif;
+  font-size: 10px;
+}
+h1 { font-size: 3.1rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.8rem; }
+h5 { font-size: 1.5rem; }
+p  { font-size: 1.6rem; }
+
 
 /*
 Lilac:       #3b1878;
@@ -38,12 +48,12 @@ header .logo.show {
   opacity: 1;
 }
 
-section {
+.stores {
   width: 95%; display: block; margin: 7px auto;
   overflow: auto; max-height: 300px; background: #4B2C82;
   opacity: 0; transition: opacity 0.3s linear 1s;
 }
-section.show {
+.stores.show {
   opacity: 1;
 }
 
@@ -111,3 +121,35 @@ section.show {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+
+
+/*______________________LOGIN_________________________*/
+.buttons {
+  width: 100%; display: flex; justify-content: center; align-items: center;
+  margin: 25px auto;
+  transition: opacity 0.3s ease 1s; opacity: 0;
+}
+.buttons.show {
+  opacity: 1;
+}
+
+.btn {
+  border: none; padding: 10px 15px;
+  font-size: 1.6rem; cursor: pointer;
+  /* border: 2px solid transparent; */
+  border: none;
+  transition: transform 0.15s;
+}
+.btn:focus {
+  outline: none;
+}
+.btn.no-bg { background: transparent; text-decoration: underline; }
+
+.btn.cl-white { color: white; }
+
+.btn.white-theme { color: #313131; background: white; }
+.btn.green-theme { color: white; background: #4cd566;  }
+.btn.lilac-theme { color: white; background: #3b1878;  }
+.btn.l-lilac-theme { color: white; background: #725c98; }

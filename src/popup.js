@@ -1,14 +1,26 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { MemoryRouter, Switch } from 'react-router'
 
-import { Popup } from './containers/popup/Popup.js'
+import { Switcher } from './containers/popup/Popup.js'
 
 const browser = chrome || msBrowser || browser
 
 let port = browser.runtime.connect('mablllhehmmfhidkdipdfbakahfibgda')
 port.onMessage.addListener(function(message, sender) {
-  // console.log(message, sender)
-  alert(JSON.stringify(message,null,2))
+  render(
+    <MemoryRouter>
+      <Switch>
+        <Switcher isUserLogged={message.isUserLogged}/>
+      </Switch>
+    </MemoryRouter>,
+    document.querySelector('.root'))
 })
-
-render(<Popup/>, document.querySelector('.root'))
+render(
+  <MemoryRouter>
+    <Switch>
+      <Switcher isUserLogged={true}/>
+    </Switch>
+  </MemoryRouter>,
+  document.querySelector('.root'))
+// render(<Switcher isUserLogged={false}/>, document.querySelector('.root'))

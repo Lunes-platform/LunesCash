@@ -45,8 +45,8 @@ export class Stores extends Component {
       return (
         <div className="store anim-onload" onClick={this.redirect} key={key}>
           <img className="icon anim-onload" src={store.icon}/>
-          <div className="name">{store.name}</div>
-          <div className="cashback">{store.cashback}</div>
+          <p className="name">{store.name}</p>
+          <p className="cashback">{store.cashback}</p>
         </div>
       )
     })
