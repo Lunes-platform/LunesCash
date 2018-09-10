@@ -13,12 +13,7 @@ export class Popup extends Component {
       animChildren(document)
     }, 100)
   }
-  componentWillMount() {
-    // if (this.props.isUserLogged)
-      this.props.history.push('/login')
-  }
   render() {
-    console.log('this.props',this.props)
     return (
       <Fragment>
         <header className="anim-onload">

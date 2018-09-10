@@ -16,11 +16,11 @@ port.onMessage.addListener(function(message, sender) {
     </MemoryRouter>,
     document.querySelector('.root'))
 })
-render(
-  <MemoryRouter>
-    <Switch>
-      <Switcher isUserLogged={true}/>
-    </Switch>
-  </MemoryRouter>,
-  document.querySelector('.root'))
+// render(
+//   <MemoryRouter>
+//     <Switch>
+//       <Switcher isUserLogged={true}/>
+//     </Switch>
+//   </MemoryRouter>,
+//   document.querySelector('.root'))
 // render(<Switcher isUserLogged={false}/>, document.querySelector('.root'))
