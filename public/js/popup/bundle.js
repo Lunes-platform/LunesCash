@@ -64,7 +64,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "d0b28c1df20d38b61895";
+/******/ 	var hotCurrentHash = "b8e2ce8838e33eb9dbde";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -12663,15 +12663,7 @@ var browser = chrome || msBrowser || browser;
 
 var port = browser.runtime.connect('mablllhehmmfhidkdipdfbakahfibgda');
 port.onMessage.addListener(function (message, sender) {
-  (0, _reactDom.render)(_react2.default.createElement(
-    _reactRouter.MemoryRouter,
-    null,
-    _react2.default.createElement(
-      _reactRouter.Switch,
-      null,
-      _react2.default.createElement(_Popup.Switcher, { isUserLogged: message.isUserLogged })
-    )
-  ), document.querySelector('.root'));
+  (0, _reactDom.render)(_react2.default.createElement(_Popup.Switcher, { isUserLogged: message.isUserLogged }), document.querySelector('.root'));
 });
 // render(
 //   <MemoryRouter>
@@ -13322,22 +13314,19 @@ var Switcher = exports.Switcher = function (_Component2) {
   _createClass(Switcher, [{
     key: 'render',
     value: function render() {
-      // if (this.props.isUserLogged)
-      //   return <Popup/>
-      // else
-      //   return <Home/>
+      if (this.props.isUserLogged) return _react2.default.createElement(Popup, null);else return _react2.default.createElement(Home, null);
       // this.props.location.push('/login')
       // console.log('this.props',this.props)
-      return _react2.default.createElement(
-        _react.Fragment,
-        null,
-        _react2.default.createElement(_reactRouter.Route, { exact: true, path: "/", render: function render(props) {
-            return _react2.default.createElement(Popup, props);
-          } }),
-        _react2.default.createElement(_reactRouter.Route, { path: "/home", component: Home }),
-        _react2.default.createElement(_reactRouter.Route, { path: "/login", component: Login }),
-        _react2.default.createElement(_reactRouter.Route, { path: "/register", component: Home })
-      );
+      // return (
+      //   <Fragment>
+      //     <Route exact path={"/"} render={(props) => {
+      //       return <Popup {...props}/>
+      //     }}/>
+      //     <Route exact path={"/home"} component={Home}/>
+      //     <Route exact path={"/login"} component={Home}/>
+      //     <Route exact path={"/register"} component={Home}/>
+      //   </Fragment>
+      // )
     }
   }]);
 

@@ -9,11 +9,7 @@ const browser = chrome || msBrowser || browser
 let port = browser.runtime.connect('mablllhehmmfhidkdipdfbakahfibgda')
 port.onMessage.addListener(function(message, sender) {
   render(
-    <MemoryRouter>
-      <Switch>
-        <Switcher isUserLogged={message.isUserLogged}/>
-      </Switch>
-    </MemoryRouter>,
+    <Switcher isUserLogged={message.isUserLogged}/>,
     document.querySelector('.root'))
 })
 // render(

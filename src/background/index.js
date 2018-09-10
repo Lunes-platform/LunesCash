@@ -41,8 +41,9 @@ UserClass.prototype.setCookie = function(param) {
       resolve(true)
     }
     browser.cookies.get({ url: LUNES_DOMAIN, name: 'user' }, cookie => {
-      if (!cookie) {
+      if (!cookie || cookie == null) {
         reject(false);
+        return;
       }
       self.cookieData = cookie
       self.cookieValue = JSON.parse(cookie.value)
