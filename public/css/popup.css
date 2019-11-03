@@ -1,14 +1,28 @@
 * {
-  margin: 0px; padding: 0px; box-sizing: border-box; font-family: 'Ubuntu', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
   font-size: 10px;
 }
-h1 { font-size: 3.1rem; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 2rem; }
-h4 { font-size: 1.8rem; }
-h5 { font-size: 1.5rem; }
-p  { font-size: 1.6rem; }
-
+h1 {
+  font-size: 3.1rem;
+}
+h2 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 2rem;
+}
+h4 {
+  font-size: 1.8rem;
+}
+h5 {
+  font-size: 1.5rem;
+}
+p {
+  font-size: 1.6rem;
+}
 
 /*
 Lilac:       #3b1878;
@@ -18,40 +32,90 @@ Red:         #ff1c38;
  */
 
 body {
-  width: 300px; margin: 0 auto; background: #3b1878;
+  width: 300px;
+  margin: 0 auto;
+  background: #3b1878;
+}
+.root {
+  border-bottom: solid 5px #4cd566;
 }
 header {
-  width: 100%; position: relative; background: #725c98;
-  height: 0px; transition: height 0.3s;
+  width: 100%;
+  position: relative;
+  height: 100%;
+  transition: height 0.3s;
 }
 header.show {
-  height: calc(75px / 2);
+  height: calc(100% / 2);
 }
 header .logo {
-  position: absolute; top: -500px; left: calc(50% - 37.5px); height: 75px;
-  transform: rotate(0deg); transition: transform 0.5s linear 1s, top 0.5s ease 0.5s;
+  position: absolute;
+  top: -500px;
+  left: calc(50% - 37.5px);
+  height: 75px;
+  transform: rotate(0deg);
+  transition: transform 0.5s linear 1s, top 0.5s ease 0.5s;
 }
 header .logo.show {
-  transform: rotate(360deg); top: 0px;
-
+  transform: rotate(360deg);
+  top: 40px;
 }
 .title {
   text-align: center;
-  margin-top: calc(75px / 2 + 5px);
   color: #725c98;
   letter-spacing: 0.5px;
   font-weight: 100;
   transition: opacity 2s ease 0.5s;
   opacity: 0;
 }
+.title-no-stores {
+  text-align: center;
+  color: #654ea6;
+}
+.buttons {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .title.show {
   opacity: 1;
 }
+.logo-container {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cash-logo {
+  font-family: "Offside";
+  font-size: 32px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: -1.18px;
+  text-align: center;
+  color: #e4e4e4;
+  margin: 10px auto;
+}
+.green {
+  color: #54d467;
+}
 
 .stores {
-  width: 95%; display: block; margin: 7px auto;
-  overflow: auto; max-height: 300px; background: #4B2C82;
-  opacity: 0; transition: opacity 0.3s linear 1s;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  max-height: 300px;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.3s linear 1s;
+  padding: 15px;
 }
 .stores.show {
   opacity: 1;
@@ -59,57 +123,129 @@ header .logo.show {
 
 /*STORES*/
 .stores::-webkit-scrollbar-track {
-  background: #dbdbdb; border-radius: 5px;
+  background: #dbdbdb;
+  border-radius: 5px;
 }
 .stores::-webkit-scrollbar-thumb {
-  background: #725c98; border-radius: 5px;
+  background: #725c98;
+  border-radius: 5px;
 }
 .stores::-webkit-scrollbar {
-  background: #dbdbdb; border-radius: 5px;
+  background: #dbdbdb;
+  border-radius: 5px;
   width: 8px;
 }
-.stores {
-  display: flex;
-  flex-flow: wrap;
-}
+
 .stores .store {
-  width: 33.333333%; margin: 10px 0 0 0; cursor: pointer;
-  transition: transform 0.15s; transform: scale(0);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  cursor: pointer;
+  transition: transform 0.15s;
+  transform: scale(0);
+  border-bottom: solid 1px #ccc;
 }
 .stores .store.show {
   transform: scale(1);
 }
 .stores .store .icon {
-  width: 50px; height: 50px; display: block; margin: 0 auto;
+  width: 50px;
+  display: block;
   transform: scale(0) rotate(0deg);
 }
-  .stores .store .icon.show {
-    animation-name: scale-up-and-rotate;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+.stores .store .icon.show {
+  animation-name: scale-up-and-rotate;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+.store-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.offer-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 10px 0 0;
+}
+
+.store-link {
+  width: 110px;
+  display: flex;
+  justify-content: space-between;
+}
+.offer-link {
+  width: 180px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-go-img {
+  width: 20px;
+}
+@keyframes scale-up-and-rotate {
+  0% {
+    transform: scale(0) rotate(0deg);
   }
-  @keyframes scale-up-and-rotate {
-    0%   { transform: scale(0) rotate(0deg); }
-    50%  { transform: scale(1.5) rotate(180deg); }
-    75%  { transform: scale(0.8) rotate(270deg); }
-    100% { transform: scale(1) rotate(360deg); }
+  50% {
+    transform: scale(1.5) rotate(180deg);
   }
+  75% {
+    transform: scale(0.8) rotate(270deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
 .stores .store .name {
-  color: white; text-align: center;
+  font-family: "Noto Sans";
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.36;
+  letter-spacing: -0.52px;
+  text-align: right;
+  color: #654ea6;
+}
+.stores .store .win {
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.36;
+  letter-spacing: -0.52px;
+  text-align: right;
+  color: #836cc4;
 }
 .stores .store .cashback {
-  color: #4cd566; text-align: center;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: -0.48px;
+  text-align: right;
+  color: #36b664;
 }
 
 .popup-stores-empty {
-
 }
 .loading {
-  margin: 0 auto; width: 100px; height: 100px;
-  display: flex; justify-content: center; align-items: center;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .loading .pipe {
-  width: 3px; height: 20px; background: lightgreen;
+  width: 3px;
+  height: 20px;
+  background: #654ea6;
   transform: rotate(0deg);
   animation-name: loading;
   animation-duration: 1s;
@@ -118,38 +254,103 @@ header .logo.show {
   animation-timing-function: linear;
 }
 @keyframes loading {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
-
-
 
 /*______________________LOGIN_________________________*/
-.buttons {
-  width: 100%; display: flex; justify-content: center; align-items: center;
-  margin: 25px auto;
-  transition: opacity 0.3s ease 1s; opacity: 0;
-}
-.buttons.show {
-  opacity: 1;
-}
-
-.btn {
-  border: none; padding: 10px 15px;
-  font-size: 1.6rem; cursor: pointer;
-  /* border: 2px solid transparent; */
+.form-login {
   border: none;
-  transition: transform 0.15s;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
-.btn:focus {
+.login-input {
+  width: 260.5px;
+  height: 34px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: solid 1px #54d467 !important;
+  background-color: #3b1878 !important;
   outline: none;
+  color: #54d467;
+  padding-left: 10px;
 }
-.btn.no-bg { background: transparent; text-decoration: underline; }
-
-.btn.cl-white { color: white; }
-
-.btn.white-theme { color: #313131; background: white; }
-.btn.green-theme { color: white; background: #4cd566;  }
-.btn.lilac-theme { color: white; background: #3b1878;  }
-.btn.l-lilac-theme { color: white; background: #725c98; }
+.login-input::-webkit-input-placeholder {
+  font-family: "Noto Sans";
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: -0.44px;
+  text-align: left;
+  color: #54d467;
+}
+.input-pass {
+  margin-top: 25px;
+}
+.btn-login {
+  height: 34px;
+  border-radius: 5px;
+  background-color: #54d467;
+  color: #3b1878;
+  margin-top: 25px;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: -0.37px;
+  padding: 0 40px !important;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s !important;
+}
+.btn-login:hover {
+  background-color: lightgreen;
+}
+.full-width {
+  width: 260.5px;
+}
+.btn-singup {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.footer-login {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-signin {
+  font-size: 12px;
+  line-height: 1.42;
+  letter-spacing: -0.44px;
+  color: #f5f5f5;
+  text-decoration: none;
+}
+.footer-signin a {
+  color: #54d467;
+  font-size: 12px;
+  text-decoration: none;
+}
+.no-bg {
+  background: transparent;
+  text-decoration: underline;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 12px;
+}
+.cl-white {
+  color: white;
+}

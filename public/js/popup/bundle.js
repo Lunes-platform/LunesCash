@@ -64,7 +64,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "b8e2ce8838e33eb9dbde";
+/******/ 	var hotCurrentHash = "5ffd9d844d7174e9d507";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -12655,24 +12655,26 @@ var _reactDom = __webpack_require__(343);
 
 var _reactRouter = __webpack_require__(133);
 
-var _Popup = __webpack_require__(350);
+var _index = __webpack_require__(350);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var browser = chrome || msBrowser || browser;
 
-var port = browser.runtime.connect('mablllhehmmfhidkdipdfbakahfibgda');
+var port = browser.runtime.connect("mablllhehmmfhidkdipdfbakahfibgda");
 port.onMessage.addListener(function (message, sender) {
-  (0, _reactDom.render)(_react2.default.createElement(_Popup.Switcher, { isUserLogged: message.isUserLogged }), document.querySelector('.root'));
+  (0, _reactDom.render)(_react2.default.createElement(_index.Switcher, { isUserLogged: message.isUserLogged }), document.querySelector(".root"));
 });
-// render(
-//   <MemoryRouter>
-//     <Switch>
-//       <Switcher isUserLogged={true}/>
-//     </Switch>
-//   </MemoryRouter>,
-//   document.querySelector('.root'))
-// render(<Switcher isUserLogged={false}/>, document.querySelector('.root'))
+(0, _reactDom.render)(_react2.default.createElement(
+  _reactRouter.MemoryRouter,
+  null,
+  _react2.default.createElement(
+    _reactRouter.Switch,
+    null,
+    _react2.default.createElement(_index.Switcher, { isUserLogged: true })
+  )
+), document.querySelector(".root"));
+(0, _reactDom.render)(_react2.default.createElement(_index.Switcher, { isUserLogged: false }), document.querySelector(".root"));
 
 /***/ }),
 /* 339 */
@@ -13244,6 +13246,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _stores = __webpack_require__(351);
 
+var _coupons = __webpack_require__(355);
+
+var _user = __webpack_require__(356);
+
 var _Functions = __webpack_require__(132);
 
 var _reactRouter = __webpack_require__(133);
@@ -13267,34 +13273,44 @@ var Popup = exports.Popup = function (_Component) {
   }
 
   _createClass(Popup, [{
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
       setTimeout(function () {
         (0, _Functions.animChildren)(document);
       }, 100);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
         _react.Fragment,
         null,
         _react2.default.createElement(
-          'header',
-          { className: 'anim-onload' },
-          _react2.default.createElement('img', { className: 'logo anim-onload', src: 'img/lns.png' })
+          "header",
+          { className: "anim-onload" },
+          _react2.default.createElement(
+            "h1",
+            { className: "cash-logo" },
+            "Lun",
+            _react2.default.createElement(
+              "span",
+              { className: "cash-logo green" },
+              "e"
+            ),
+            "s Ca",
+            _react2.default.createElement(
+              "span",
+              { className: "cash-logo green" },
+              "s"
+            ),
+            "h"
+          )
         ),
         _react2.default.createElement(
-          'h1',
-          { className: 'title anim-onload' },
-          'Lunes cashback'
-        ),
-        _react2.default.createElement(
-          'section',
-          { className: 'stores anim-onload' },
-          _react2.default.createElement(_stores.Stores, null)
-        ),
-        _react2.default.createElement('footer', null)
+          "section",
+          { className: "stores anim-onload" },
+          _react2.default.createElement(_user.User, null)
+        )
       );
     }
   }]);
@@ -13312,9 +13328,9 @@ var Switcher = exports.Switcher = function (_Component2) {
   }
 
   _createClass(Switcher, [{
-    key: 'render',
+    key: "render",
     value: function render() {
-      if (this.props.isUserLogged) return _react2.default.createElement(Popup, null);else return _react2.default.createElement(Home, null);
+      if (this.props.isUserLogged) return _react2.default.createElement(Popup, null);else return _react2.default.createElement(Popup, null);
       // this.props.location.push('/login')
       // console.log('this.props',this.props)
       // return (
@@ -13343,40 +13359,60 @@ var Home = function (_Component3) {
   }
 
   _createClass(Home, [{
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
       setTimeout(function () {
         (0, _Functions.animChildren)(document);
       }, 100);
     }
   }, {
-    key: 'render',
+    key: "handleLogin",
+    value: function handleLogin() {
+      return _react2.default.createElement(Login, null);
+    }
+  }, {
+    key: "render",
     value: function render() {
+      var _this4 = this;
+
       return _react2.default.createElement(
         _react.Fragment,
         null,
         _react2.default.createElement(
-          'header',
-          { className: 'anim-onload' },
-          _react2.default.createElement('img', { className: 'logo anim-onload', src: 'img/lns.png' })
-        ),
-        _react2.default.createElement(
-          'h1',
-          { className: 'title anim-onload' },
-          "You're not logged in"
-        ),
-        _react2.default.createElement(
-          'section',
-          { className: 'buttons anim-onload' },
+          "header",
+          { className: "anim-onload" },
           _react2.default.createElement(
-            'button',
-            { className: 'btn no-bg cl-white' },
-            'Log in'
+            "div",
+            { className: "logo-container" },
+            _react2.default.createElement("img", { className: "logo anim-onload", src: "img/lns.png" })
+          )
+        ),
+        _react2.default.createElement(
+          "h1",
+          { className: "title anim-onload" },
+          "Bem vindo!"
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "buttons anim-onload" },
+          _react2.default.createElement(
+            "button",
+            {
+              onClick: function onClick() {
+                return _this4.handleLogin();
+              },
+              className: "btn no-bg cl-white"
+            },
+            "Login"
           ),
           _react2.default.createElement(
-            'button',
-            { className: 'btn green-theme' },
-            'Register'
+            "a",
+            {
+              href: "https://luneswallet.app/create",
+              target: "_blank",
+              className: "btn-login btn-singup"
+            },
+            "Cadastre-se"
           )
         )
       );
@@ -13396,12 +13432,83 @@ var Login = function (_Component4) {
   }
 
   _createClass(Login, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'h1',
+        _react.Fragment,
         null,
-        "You're just going to do the login!"
+        _react2.default.createElement(
+          "header",
+          { className: "anim-onload" },
+          _react2.default.createElement(
+            "div",
+            { className: "logo-container" },
+            _react2.default.createElement(
+              "h1",
+              { className: "cash-logo" },
+              "Lun",
+              _react2.default.createElement(
+                "span",
+                { className: "cash-logo green" },
+                "e"
+              ),
+              "s Ca",
+              _react2.default.createElement(
+                "span",
+                { className: "cash-logo green" },
+                "s"
+              ),
+              "h"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          null,
+          _react2.default.createElement(
+            "form",
+            { className: "form-login" },
+            _react2.default.createElement("input", { className: "login-input", type: "text", placeholder: "email" }),
+            _react2.default.createElement("input", {
+              className: "login-input input-pass",
+              type: "password",
+              placeholder: "senha"
+            }),
+            _react2.default.createElement("input", {
+              type: "submit",
+              className: "btn btn-login full-width",
+              value: "Login"
+            })
+          )
+        ),
+        _react2.default.createElement(
+          "footer",
+          null,
+          _react2.default.createElement(
+            "div",
+            { className: "footer-login" },
+            _react2.default.createElement(
+              "p",
+              { className: "footer-signin" },
+              "N\xE3o tem uma conta?",
+              " ",
+              _react2.default.createElement(
+                "a",
+                { href: "https://luneswallet.app/create", target: "_blank" },
+                "inscrever-se"
+              )
+            ),
+            _react2.default.createElement(
+              "a",
+              {
+                href: "https://luneswallet.app/reset",
+                target: "_blank",
+                className: "footer-signin"
+              },
+              "Esqueceu sua senha?"
+            )
+          )
+        )
       );
     }
   }]);
@@ -13451,14 +13558,14 @@ var Stores = exports.Stores = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Stores.__proto__ || Object.getPrototypeOf(Stores)).call(this, props));
 
-    Object.defineProperty(_this, 'redirect', {
+    Object.defineProperty(_this, "redirect", {
       enumerable: true,
       writable: true,
       value: function value() {
-        alert('Should I redirect ?');
+        alert("Should I redirect ?");
       }
     });
-    Object.defineProperty(_this, 'componentDidMount', {
+    Object.defineProperty(_this, "componentDidMount", {
       enumerable: true,
       writable: true,
       value: function () {
@@ -13475,7 +13582,7 @@ var Stores = exports.Stores = function (_Component) {
                   stores = _context.sent;
 
                 case 3:
-                case 'end':
+                case "end":
                   return _context.stop();
               }
             }
@@ -13489,58 +13596,107 @@ var Stores = exports.Stores = function (_Component) {
         return value;
       }()
     });
-    Object.defineProperty(_this, 'getStores', {
+    Object.defineProperty(_this, "getStores", {
       enumerable: true,
       writable: true,
       value: function value() {
         return new Promise(function (resolve, reject) {
-          var stores = [{ name: 'Americanas', shortname: 'Americanas', icon: '/img/stores/store.png', cashback: '10%', link: 'http://americanas.com' }, { name: 'Netshoes', shortname: 'Netshoes', icon: '/img/stores/store.png', cashback: '5%', link: 'http://americanas.com' }, { name: 'Casas Bahia', shortname: 'CBahia', icon: '/img/stores/store.png', cashback: '1%', link: 'http://americanas.com' }, { name: 'Elmo', shortname: 'Elmo', icon: '/img/stores/store.png', cashback: '3%', link: 'http://americanas.com' }];
+          var stores = [{
+            name: "Americanas",
+            shortname: "Americanas",
+            icon: "/img/stores/americanas.png",
+            cashback: "1,5%",
+            link: "http://americanas.com"
+          }, {
+            name: "Netshoes",
+            shortname: "Netshoes",
+            icon: "/img/stores/netshoes.png",
+            cashback: "1,5%",
+            link: "http://americanas.com"
+          }, {
+            name: "Casas Bahia",
+            shortname: "CBahia",
+            icon: "/img/stores/casas-bahia.png",
+            cashback: "1,5%",
+            link: "http://americanas.com"
+          }, {
+            name: "Submarino",
+            shortname: "Submarino",
+            icon: "/img/stores/submarino.png",
+            cashback: "1,5%",
+            link: "http://submarino.com"
+          }, {
+            name: "Elmo",
+            shortname: "Elmo",
+            icon: "/img/stores/elmo.png",
+            cashback: "1,5%",
+            link: "http://americanas.com"
+          }];
           setTimeout(function () {
-            _this.setState({ stores: stores, status: { type: 'complete' } });
+            _this.setState({ stores: stores, status: { type: "complete" } });
             resolve(stores);
           }, 3000);
         });
       }
     });
-    Object.defineProperty(_this, '_renderEmpty', {
+    Object.defineProperty(_this, "_renderEmpty", {
       enumerable: true,
       writable: true,
       value: function value() {
-        return _react2.default.createElement('img', { className: 'popup-stores-empty', src: '/img/nothin-found.png' });
+        return _react2.default.createElement(
+          "h1",
+          { className: "title-no-stores" },
+          "Ainda n\xE3o h\xE1 lojas parceiras"
+        );
       }
     });
-    Object.defineProperty(_this, '_renderError', {
+    Object.defineProperty(_this, "_renderError", {
       enumerable: true,
       writable: true,
       value: function value(message) {
         return _react2.default.createElement(
-          'h1',
+          "h1",
           null,
           message
         );
       }
     });
-    Object.defineProperty(_this, '_renderStores', {
+    Object.defineProperty(_this, "_renderStores", {
       enumerable: true,
       writable: true,
       value: function value(stores) {
         setTimeout(function () {
-          (0, _Functions.animChildren)(document.querySelector('.stores'));
+          (0, _Functions.animChildren)(document.querySelector(".stores"));
         }, 500);
         return stores.map(function (store, key) {
           return _react2.default.createElement(
-            'div',
-            { className: 'store anim-onload', onClick: _this.redirect, key: key },
-            _react2.default.createElement('img', { className: 'icon anim-onload', src: store.icon }),
+            "div",
+            { className: "store anim-onload", onClick: _this.redirect, key: key },
+            _react2.default.createElement("img", { className: "icon anim-onload", src: store.icon }),
             _react2.default.createElement(
-              'p',
-              { className: 'name' },
-              store.name
-            ),
-            _react2.default.createElement(
-              'p',
-              { className: 'cashback' },
-              store.cashback
+              "div",
+              { className: "store-link" },
+              _react2.default.createElement(
+                "div",
+                { className: "store-name" },
+                _react2.default.createElement(
+                  "p",
+                  { className: "name" },
+                  store.name
+                ),
+                _react2.default.createElement(
+                  "p",
+                  { className: "win" },
+                  "Ganhe ",
+                  store.cashback
+                ),
+                _react2.default.createElement(
+                  "p",
+                  { className: "cashback" },
+                  "de casback"
+                )
+              ),
+              _react2.default.createElement("img", { className: "icon-go-img", src: "img/icon-go.svg", alt: "" })
             )
           );
         });
@@ -13548,28 +13704,28 @@ var Stores = exports.Stores = function (_Component) {
     });
 
     _this.state = {
-      status: { type: 'loading', message: '' },
+      status: { type: "loading", message: "" },
       stores: []
     };
     return _this;
   }
 
   _createClass(Stores, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       var _state = this.state,
           status = _state.status,
           stores = _state.stores;
 
-      if (status.type === 'loading') return _react2.default.createElement(_Components.Loading, null);
+      if (status.type === "loading") return _react2.default.createElement(_Components.Loading, null);
 
       if (!stores) {
-        console.error('popup/render/stores, props.stores is an falsy value');
-        return this._renderError('Couldnt load stores, try contact us');
+        console.error("popup/render/stores, props.stores is an falsy value");
+        return this._renderError("Couldnt load stores, try contact us");
       }
-      if (stores.constructor.name !== 'Array') {
-        console.error('popup/render/stores, props.stores is not an array');
-        return this._renderError('Couldnt load stores, try contact us');
+      if (stores.constructor.name !== "Array") {
+        console.error("popup/render/stores, props.stores is not an array");
+        return this._renderError("Couldnt load stores, try contact us");
       }
       if (stores.length > 0) return this._renderStores(stores);else return this._renderEmpty();
     }
@@ -13638,6 +13794,286 @@ var animChildren = exports.animChildren = function animChildren(father) {
     element.classList.add('show');
   });
 };
+
+/***/ }),
+/* 355 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Coupons = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Components = __webpack_require__(352);
+
+var _Functions = __webpack_require__(132);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Coupons = exports.Coupons = function (_Component) {
+  _inherits(Coupons, _Component);
+
+  function Coupons(props) {
+    var _this2 = this;
+
+    _classCallCheck(this, Coupons);
+
+    var _this = _possibleConstructorReturn(this, (Coupons.__proto__ || Object.getPrototypeOf(Coupons)).call(this, props));
+
+    Object.defineProperty(_this, "redirect", {
+      enumerable: true,
+      writable: true,
+      value: function value() {
+        alert("Should I redirect ?");
+      }
+    });
+    Object.defineProperty(_this, "componentDidMount", {
+      enumerable: true,
+      writable: true,
+      value: function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          var coupons;
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.next = 2;
+                  return _this.getCoupons();
+
+                case 2:
+                  coupons = _context.sent;
+
+                case 3:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, _this2);
+        }));
+
+        function value() {
+          return _ref.apply(this, arguments);
+        }
+
+        return value;
+      }()
+    });
+    Object.defineProperty(_this, "getCoupons", {
+      enumerable: true,
+      writable: true,
+      value: function value() {
+        return new Promise(function (resolve, reject) {
+          var coupons = [{
+            store: "Americanas",
+            offer: "R$ 30 OFF em compras de R$ 150 ",
+            icon: "/img/stores/americanas.png",
+            cashback: "1,5%",
+            link: "http://americanas.com"
+          }, {
+            store: "Netshoes",
+            offer: "Nas compras de duas fragância Olympéa ",
+            icon: "/img/stores/netshoes.png",
+            cashback: "1,5%",
+            link: "http://americanas.com"
+          }, {
+            store: "Casas Bahia",
+            offer: "10% OFF na primeira compra ",
+            icon: "/img/stores/casas-bahia.png",
+            cashback: "1,5%",
+            link: "http://americanas.com"
+          }, {
+            store: "Submarino",
+            offer: "Preços de BLACK FRIDAY na Evino!",
+            icon: "/img/stores/submarino.png",
+            cashback: "1,5%",
+            link: "http://submarino.com"
+          }, {
+            store: "Elmo",
+            offer: "Preços de BLACK FRIDAY na Evino! ",
+            icon: "/img/stores/elmo.png",
+            cashback: "1,5%",
+            link: "http://americanas.com"
+          }];
+          setTimeout(function () {
+            _this.setState({ coupons: coupons, status: { type: "complete" } });
+            resolve(coupons);
+          }, 3000);
+        });
+      }
+    });
+    Object.defineProperty(_this, "_renderEmpty", {
+      enumerable: true,
+      writable: true,
+      value: function value() {
+        return _react2.default.createElement(
+          "h1",
+          { className: "title-no-stores" },
+          "Ainda n\xE3o h\xE1 cupons para mostrar"
+        );
+      }
+    });
+    Object.defineProperty(_this, "_renderError", {
+      enumerable: true,
+      writable: true,
+      value: function value(message) {
+        return _react2.default.createElement(
+          "h1",
+          null,
+          message
+        );
+      }
+    });
+    Object.defineProperty(_this, "_renderCoupons", {
+      enumerable: true,
+      writable: true,
+      value: function value(coupons) {
+        setTimeout(function () {
+          (0, _Functions.animChildren)(document.querySelector(".stores"));
+        }, 500);
+        return coupons.map(function (coupon, key) {
+          return _react2.default.createElement(
+            "div",
+            { className: "store anim-onload", onClick: _this.redirect, key: key },
+            _react2.default.createElement("img", { className: "icon anim-onload", src: coupon.icon }),
+            _react2.default.createElement(
+              "div",
+              { className: "offer-link" },
+              _react2.default.createElement(
+                "div",
+                { className: "offer-name" },
+                _react2.default.createElement(
+                  "p",
+                  { className: "name" },
+                  coupon.offer
+                ),
+                _react2.default.createElement(
+                  "p",
+                  { className: "win" },
+                  "Ganhe ",
+                  coupon.cashback
+                ),
+                _react2.default.createElement(
+                  "p",
+                  { className: "cashback" },
+                  "de casback"
+                )
+              ),
+              _react2.default.createElement("img", { className: "icon-go-img", src: "img/icon-go.svg", alt: "" })
+            )
+          );
+        });
+      }
+    });
+
+    _this.state = {
+      status: { type: "loading", message: "" },
+      coupons: []
+    };
+    return _this;
+  }
+
+  _createClass(Coupons, [{
+    key: "render",
+    value: function render() {
+      var _state = this.state,
+          status = _state.status,
+          coupons = _state.coupons;
+
+      if (status.type === "loading") return _react2.default.createElement(_Components.Loading, null);
+
+      if (!coupons) {
+        console.error("popup/render/coupons, props.coupons is an falsy value");
+        return this._renderError("Couldnt load coupons, try contact us");
+      }
+      if (coupons.constructor.name !== "Array") {
+        console.error("popup/render/coupons, props.coupons is not an array");
+        return this._renderError("Couldnt load coupons, try contact us");
+      }
+      if (coupons.length > 0) return this._renderCoupons(coupons);else return this._renderEmpty();
+    }
+  }]);
+
+  return Coupons;
+}(_react.Component);
+
+/***/ }),
+/* 356 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.User = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Components = __webpack_require__(352);
+
+var _Functions = __webpack_require__(132);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var User = exports.User = function (_Component) {
+  _inherits(User, _Component);
+
+  function User(props) {
+    _classCallCheck(this, User);
+
+    var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
+
+    _this.state = {
+      status: { type: "loading", message: "" }
+    };
+    return _this;
+  }
+
+  _createClass(User, [{
+    key: "render",
+    value: function render() {
+      var status = this.state.status;
+
+      if (status.type === "loading") return _react2.default.createElement(_Components.Loading, null);
+
+      return _react2.default.createElement(
+        "h1",
+        null,
+        "Informa\xE7\xF5es do usu\xE1rio"
+      );
+    }
+  }]);
+
+  return User;
+}(_react.Component);
 
 /***/ })
 /******/ ]);

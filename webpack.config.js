@@ -1,28 +1,28 @@
-const HardSource = require('hard-source-webpack-plugin')
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const HardSource = require("hard-source-webpack-plugin");
+const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 
 let popup = {
-  target: 'web',
+  target: "web",
   // mode: 'development', //TODO parse to production
-  mode: 'production', //TODO parse to production
-  entry: ['babel-polyfill',__dirname+'/src/popup.js'],
+  mode: "production", //TODO parse to production
+  entry: ["babel-polyfill", __dirname + "/src/index.js"],
   output: {
-    filename: 'bundle.js',
-    path: __dirname+'/public/js/popup/'
+    filename: "bundle.js",
+    path: __dirname + "/public/js/popup/"
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         query: {
-          presets: ["env","react"],
+          presets: ["env", "react"],
           plugins: [
-						// ['transform-react-jsx', { pragma: 'h' }],
-            ['transform-class-properties', { spec: true }],
-            'transform-object-rest-spread'
-					]
+            // ['transform-react-jsx', { pragma: 'h' }],
+            ["transform-class-properties", { spec: true }],
+            "transform-object-rest-spread"
+          ]
         }
       }
     ]
@@ -30,12 +30,12 @@ let popup = {
   plugins: [
     new HardSource(),
     new BrowserSyncPlugin({
-      host: 'localhost',
+      host: "localhost",
       port: 8080,
       server: {
-        baseDir: ['./public/']
+        baseDir: ["./public/"]
       },
-      files: ['*.css','*.js'],
+      files: ["*.css", "*.js"],
       watch: true
     })
   ],
@@ -44,37 +44,34 @@ let popup = {
   },
   resolve: {
     alias: {
-      Components: __dirname+'/src/components/',
-      Containers: __dirname+'/src/containers/',
-      Functions: __dirname+'/src/functions/',
+      Components: __dirname + "/src/components/",
+      Containers: __dirname + "/src/containers/",
+      Functions: __dirname + "/src/functions/"
     }
   }
-}
+};
 let background = {
-  mode: 'production',
-  target: 'web',
-  entry: ['babel-polyfill', __dirname+'/src/background/index.js'],
+  mode: "production",
+  target: "web",
+  entry: ["babel-polyfill", __dirname + "/src/background/index.js"],
   output: {
-    filename: 'main.bundle.js',
-    path: __dirname+'/public/js/background/',
+    filename: "main.bundle.js",
+    path: __dirname + "/public/js/background/"
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         query: {
-          presets: ['env'],
-          plugins: ['transform-object-rest-spread']
+          presets: ["env"],
+          plugins: ["transform-object-rest-spread"]
         }
       }
     ]
   },
-  plugins: [
-    new HardSource()
-  ]
-}
+  plugins: [new HardSource()]
+};
 
-
-module.exports = [popup, background]
+module.exports = [popup, background];
